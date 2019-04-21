@@ -12,11 +12,36 @@ import interfaces.IPatient;
  * @author Matheus
  */
 public class Patient implements IPatient {
+    public static final String YES = "yes";
+    public static final String NO = "no";
+    public static final String UNKOWN = "unknown";
+    
+    private String symptons[];
 
     @Override
     public String ask(String question) {
-        /*TODO*/
-        return "";
+        if (question.equalsIgnoreCase("PARALYSIS"))
+            return symptons[0];
+        
+        if (question.equalsIgnoreCase("YELLOW_TONG"))
+            return symptons[1];
+        
+        if (question.equalsIgnoreCase("MEMBER_LOSS"))
+            return symptons[2];
+        
+        if (question.equalsIgnoreCase("CHEST_PAIN"))
+            return symptons[3];
+        
+        if (question.equalsIgnoreCase("TREMBLING_FINGER"))
+            return symptons[4];
+        
+        if (question.equalsIgnoreCase("SEVERE_ANGER"))
+            return symptons[5];
+        
+        if (question.equalsIgnoreCase("HISTORY_BACTERIA"))
+            return symptons[6];
+        
+        return UNKNOWN;
     }
 
     @Override
