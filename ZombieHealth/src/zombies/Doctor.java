@@ -7,6 +7,7 @@ package zombies;
 
 import interfaces.IDoctor;
 import interfaces.IResponder;
+import interfaces.ITableProducer;
 
 /**
  *
