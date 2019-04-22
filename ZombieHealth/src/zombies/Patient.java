@@ -5,8 +5,10 @@
  */
 package zombies;
 
+import data.DataSetComponent;
 import interfaces.IPatient;
 import interfaces.ITableProducer;
+import java.util.Random;
 
 /**
  *
@@ -17,42 +19,55 @@ public class Patient implements IPatient {
     public static final String NO = "no";
     public static final String UNKNOWN = "unknown";
     
-    private String symptons[];
+    private ITableProducer producer;
+    
+    private String name;
+    private boolean info[];
+    private String diagnostic;
 
+    public Patient(String name) {
+        producer = null;
+               
+        this.name = name;
+        info = null;
+        diagnostic = "";
+    }
+
+    public String getName() {
+        return name;
+    }
+    
     @Override
     public String ask(String question) {
-        if (question.equalsIgnoreCase("PARALYSIS"))
-            return symptons[0];
+        String attributes[] = producer.requestAttributes();
+        for (int a = 0; a < attributes.length-1; a++)
+            if (question.toUpperCase().contains( (attributes[a]).toUpperCase()) ) {
+                System.out.println("Senhore " + name + ": " + (info[a] ? YES : NO));
+                return info[a] ? YES : NO;
+            }
         
-        if (question.equalsIgnoreCase("YELLOW_TONG"))
-            return symptons[1];
-        
-        if (question.equalsIgnoreCase("MEMBER_LOSS"))
-            return symptons[2];
-        
-        if (question.equalsIgnoreCase("CHEST_PAIN"))
-            return symptons[3];
-        
-        if (question.equalsIgnoreCase("TREMBLING_FINGER"))
-            return symptons[4];
-        
-        if (question.equalsIgnoreCase("SEVERE_ANGER"))
-            return symptons[5];
-        
-        if (question.equalsIgnoreCase("HISTORY_BACTERIA"))
-            return symptons[6];
-        
+        System.out.println("Senhore " + name + ": " + UNKNOWN);
         return UNKNOWN;
     }
 
     @Override
     public boolean finalAnswer(String answer) {
-        /*TODO*/
-        return true;
+        return diagnostic.equalsIgnoreCase(answer);
     }
     
     @Override
     public void connect(ITableProducer producer) {
-        /*TODO*/
+        this.producer = producer;
+        String instances[][] = this.producer.requestInstances();
+        
+        Random ran = new Random();
+        int x = ran.nextInt(instances.length);
+        
+        info = new boolean[(instances[x]).length];
+        
+        for(int i = 0; i < (instances[x]).length - 1;i++){
+            info[i] = (instances[x][i]).equalsIgnoreCase("t");
+        }
+        this.diagnostic = instances[x][(instances[x]).length - 1];
     }
 }
