@@ -9,6 +9,6 @@ package interfaces;
  *
  * @author Matheus
  */
-public interface IPatient extends IResponder {
+public interface IPatient extends IResponder, ITableProducerReceptacle {
     
 }
