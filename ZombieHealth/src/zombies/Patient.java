@@ -50,4 +50,8 @@ public class Patient implements IPatient {
         return true;
     }
     
+    @Override
+    public void connect(ITableProducer producer) {
+        /*TODO*/
+    }
 }
