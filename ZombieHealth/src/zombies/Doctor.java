@@ -24,4 +24,8 @@ public class Doctor implements IDoctor {
         /*TODO*/
     }
     
+    @Override
+    public void connect(ITableProducer producer) {
+        /*TODO*/
+    }
 }
