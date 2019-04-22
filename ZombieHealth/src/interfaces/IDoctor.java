@@ -9,6 +9,6 @@ package interfaces;
  *
  * @author Matheus
  */
-public interface IDoctor extends IEnquirer, IResponderReceptacle {
+public interface IDoctor extends IEnquirer, IResponderReceptacle, ITableProducerReceptacle {
     
 }
