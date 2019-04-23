@@ -5,7 +5,6 @@
  */
 package zombies;
 
-import data.DataSetComponent;
 import interfaces.IPatient;
 import interfaces.ITableProducer;
 import java.util.Random;
@@ -31,6 +30,10 @@ public class Patient implements IPatient {
         this.name = name;
         info = null;
         diagnostic = "";
+    }
+
+    Patient() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     public String getName() {

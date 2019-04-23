@@ -36,7 +36,7 @@ public class Doctor implements IDoctor {
         int differences = 0; 
         for (int i = 0; i < reference.length; i++) {
             for (int j = 0; j < reference[i].length-1; j++)
-                if (info[j].equalsIgnoreCase(Patient.UNKNOWN) || !reference[i][j].equalsIgnoreCase(info[j].equalsIgnoreCase(Patient.YES) ? "t" : "f")) {
+                if (!reference[i][j].equalsIgnoreCase(info[j].equalsIgnoreCase(Patient.YES) ? "t" : "f") || info[j].equalsIgnoreCase(Patient.UNKNOWN)) {
                     differences++;
                     break;
                 }
