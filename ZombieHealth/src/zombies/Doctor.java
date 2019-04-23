@@ -36,7 +36,7 @@ public class Doctor implements IDoctor {
         int differences = 0; 
         for (int i = 0; i < reference.length; i++) {
             for (int j = 0; j < reference[i].length-1; j++)
-                if (!reference[i][j].equalsIgnoreCase(info[j].equalsIgnoreCase(Patient.YES) ? "t" : "f") || info[j].equalsIgnoreCase(Patient.UNKNOWN)) {
+                if (info[j].equalsIgnoreCase(Patient.UNKNOWN) || !(reference[i][j].equalsIgnoreCase(info[j].equalsIgnoreCase(Patient.YES) ? "1" : "0") || reference[i][j].equalsIgnoreCase(info[j].equalsIgnoreCase(Patient.YES) ? "t" : "f"))) {
                     differences++;
                     break;
                 }
@@ -51,7 +51,9 @@ public class Doctor implements IDoctor {
             } else
                 differences = 0;
         }
-                    
+         
+        if (diagnostic == "")
+            diagnostic = Patient.UNKNOWN;
         return diagnostic;
     }
     

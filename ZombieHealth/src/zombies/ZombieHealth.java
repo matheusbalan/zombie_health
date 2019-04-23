@@ -21,7 +21,7 @@ public class ZombieHealth {
      */
     public static void main(String[] args) {
         IDataSet dataset = new DataSetComponent();
-        dataset.setDataSource("/home/ec2018-fra/ra222142/Documents/mc322/zombie/zombie_health/ZombieHealth/src/data/tables/zombie-health-spreadsheet-ml-training.csv");
+        dataset.setDataSource("/home/ec2018-fra/ra222142/Documents/mc322/zombie/zombie_health/ZombieHealth/src/data/tables/zombie-health-new-cases500.csv");
         
         // instanciando o componente paciente
         IPatient aPatient = new Patient("Santanche");
@@ -37,7 +37,7 @@ public class ZombieHealth {
 
         // conectando-o ao componente paciente
         cDoctor.connect(aPatient);
-
+        
         // executando a entrevista
         cDoctor.startInterview();
     }

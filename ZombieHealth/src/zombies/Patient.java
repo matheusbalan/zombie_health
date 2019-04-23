@@ -32,10 +32,6 @@ public class Patient implements IPatient {
         diagnostic = "";
     }
 
-    Patient() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
     public String getName() {
         return name;
     }
@@ -55,7 +51,7 @@ public class Patient implements IPatient {
 
     @Override
     public boolean finalAnswer(String answer) {
-        return diagnostic.equalsIgnoreCase(answer);
+        return answer.toUpperCase().contains(diagnostic.toUpperCase());
     }
     
     @Override
@@ -69,7 +65,7 @@ public class Patient implements IPatient {
         info = new boolean[(instances[x]).length];
         
         for(int i = 0; i < (instances[x]).length - 1;i++){
-            info[i] = (instances[x][i]).equalsIgnoreCase("t");
+            info[i] = (instances[x][i]).equalsIgnoreCase("t") || (instances[x][i]).equalsIgnoreCase("1");
         }
         this.diagnostic = instances[x][(instances[x]).length - 1];
     }
